@@ -32,12 +32,20 @@ function newPost(message) {
 }
 
 function deletePost(postId, res) {
-  console.log(res.end);
+  console.log("hello", postId);
   db.query("DELETE FROM img_posts WHERE ($1)=id", [postId])
-    .then(res.end)
-    .catch(console.err);
+    .then(() => {
+      res.writeHead(302, { location: "/" });
+      // res.writeHead(200);
+      res.end();
+    })
+    .catch(console.log);
 }
 
-function getUserPosts(user) {}
+function getUserPosts(user) {
+  return db
+    .query("SELECT * FROM img_posts WHERE ($1)=username", [user])
+    .then((res) => res.rows);
+}
 
-module.exports = { newPost, getPosts, deletePost };
+module.exports = { newPost, getPosts, deletePost, getUserPosts };

@@ -30,23 +30,22 @@ function sharedLayout(bodyContent) {
 
 function makeArticle(obj) {
   return `    
-    <article class="post" data-index=${obj.id}>
-      <p class="post__author">${obj.username} wrote:</p>
-      <p class="post__textContent">${obj.post}</p>
-      <p class="post__date">on: ${obj.post_date
-        .toString()
-        .split(" ")
-        .slice(0, 3)
-        .join(" ")}</p>
+    <article class="post">
+    <p class="post__author">${obj.username} wrote:</p>
+    <p class="post__textContent">${obj.post}</p>
+    <p class="post__date">on: ${obj.post_date
+      .toString()
+      .split(" ")
+      .slice(0, 3)
+      .join(" ")}</p>
       <img src=${obj.img_url}>
-      <button
-        class="post__remove-button"
-        aria-label="button to remove post"
-        type="button"
-      >
+    <a class="post__remove-button"
+    aria-label="button to remove post"
+    href="/delete-post?id=${obj.id}">
       <i class="fas fa-trash-alt"></i>
-      </button>
-    </article>
+    </a>
+    </button>
+  </article>
 `;
 }
 
