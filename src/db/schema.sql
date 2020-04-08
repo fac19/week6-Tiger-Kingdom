@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS users, blog_posts
+    DROP TABLE IF EXISTS users, img_posts
     CASCADE;
 
 
@@ -8,10 +8,10 @@ CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
     username VARCHAR(225) NOT NULL,
-    user_password TEXT NOT NULL
+    user_password TEXT
 );
 
-CREATE TABLE blog_posts
+CREATE TABLE img_posts
 (
     id SERIAL PRIMARY KEY,
     author_id INTEGER REFERENCES users(id),
@@ -21,14 +21,14 @@ CREATE TABLE blog_posts
 );
 
 INSERT INTO users
-    (username, user_pasword)
+    (username, user_password)
 VALUES
-    ('tom', '1234'),
+    ('Tom', '1234'),
     ('Chloe', 'password123'),
     ('Kat', 'AlexReid'),
     ('Roger', '123456789a');
 
-INSERT INTO blog_posts
+INSERT INTO img_posts
     (author_id, post, img_url)
 VALUES
     (1, 'This is a picture of a Tiger', 'https://images.unsplash.com/photo-1515536765-9b2a70c4b333?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'),

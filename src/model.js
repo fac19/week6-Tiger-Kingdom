@@ -6,10 +6,10 @@ function getPosts() {
       `
         SELECT *
         FROM users
-        INNER JOIN blog_posts ON users.id = blog_posts.author_id; `
+        INNER JOIN img_posts ON users.id = img_posts.author_id; `
     )
-    .catch(err => {
-      console.log("Here be error   ", err);
+    .catch((err) => {
+      console.log("Here be error", err);
     });
 }
 
@@ -19,13 +19,13 @@ function newPost(message) {
     .then(() => {
       return db
         .query(`SELECT id FROM users where username=($1)`, [message.username])
-        .then(item => {
-          return item.rows.map(obj => obj.id);
+        .then((item) => {
+          return item.rows.map((obj) => obj.id);
         })
-        .then(idArr => {
+        .then((idArr) => {
           return db.query(
-            "INSERT INTO blog_posts(author_id, post) VALUES($1, $2)",
-            [idArr[0], message.post_text]
+            "INSERT INTO img_posts(author_id, post, img_url) VALUES($1, $2, $3)",
+            [idArr[0], message.post_text, message.img_url]
           );
         });
     });
@@ -33,10 +33,11 @@ function newPost(message) {
 
 function deletePost(postId, res) {
   console.log(res.end);
-  db.query("DELETE FROM blog_posts WHERE ($1)=id", [postId])
-  .then(res.end)
-  .catch(console.err);
- 
+  db.query("DELETE FROM img_posts WHERE ($1)=id", [postId])
+    .then(res.end)
+    .catch(console.err);
 }
+
+function getUserPosts(user) {}
 
 module.exports = { newPost, getPosts, deletePost };
