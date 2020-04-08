@@ -4,4 +4,4 @@ const model = require("../model.js");
 
 function signupHandler() {}
 
-module.exports = signHandler;
+module.exports = signupHandler;

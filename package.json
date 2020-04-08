@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "startdev": "nodemon src/server.js"
+    "startdev": "killall node; nodemon src/server.js",
+    "setupdb" : "node src/db/build.js"
   },
   "repository": {
     "type": "git",
