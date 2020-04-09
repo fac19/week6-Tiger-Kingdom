@@ -1,7 +1,7 @@
 const test = require("tape");
 const build = require("../src/db/build");
 
-const { newPost, getPosts, deletePost, getUserPosts } = require("../model");
+const { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable } = require("../src/model");
 
 test("tests are running!", (t) => {
   const x = 5;
@@ -13,9 +13,9 @@ test("Can get user posts!", (t) => {
   build().then(() => {
     getPosts()
       .then((post) => {
-        const firstPost = post[0];
-        t.equal(firstPost.post, "This is a picture of a tiger");
-        t.equal(post.length, 4);
+        const firstPost = post.rows[0];
+        t.equal(firstPost.post, "This is a picture of a Tiger");
+        t.equal(post.rows.length, 4);
         t.end();
       })
       .catch((error) => {
@@ -24,6 +24,46 @@ test("Can get user posts!", (t) => {
       });
   });
 });
+
+test('Can create new user', t => {
+  build().then(() => {
+    const newUser = 'Bob';
+    const newPassword = 'password123'
+    createNewUser(newUser, newPassword)
+    .then(() => {
+      getUsersTable()
+      .then((data) => {
+        t.equal(data[data.length-1].username, 'Bob')
+        t.equal(data.length, 5)
+        t.end();
+      })
+    })
+    
+  })
+  .catch(err => { t.error(err),
+  t.end()})
+})
+
+
+test('Checks for existing user before adding it', t => {
+  build().then(() => {
+    const newUser = 'Tom';
+    const newPassword = 'password123'
+    createNewUser(newUser, newPassword)
+    .then(() => {
+      getUsersTable()
+      .then((data) => {
+        t.equal(data[data.length-1].username, 'Roger')
+        t.equal(data.length, 4)
+        t.end();
+      })
+    })
+    
+  })
+  .catch(err => { t.error(err),
+  t.end()})
+})
+
 
 // test("Can get all posts from one user", (t) => {
 //   build().then(() => {
