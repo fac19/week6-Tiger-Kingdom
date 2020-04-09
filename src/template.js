@@ -85,7 +85,7 @@ function signupPage() {
   return sharedLayout(
     `
   <h1>Sign up to Enter the Tiger Kingdom...</h1>
-  <form class="form" action="submit" method="POST">
+  <form class="form" action="signup" method="POST">
     <label for="signup_username">Username: </label>
     <input id="signup_username" name="signup_username" placeholder="Enter username" required>
     
