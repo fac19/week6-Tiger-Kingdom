@@ -15,15 +15,15 @@ function loginPostHandler(request, response) {
 
             model.getUser(username)
                 .then(dbUser => {
-                    console.log(`This is ${password} and this is ${dbUser.user_password}`)
-
+                    console.log(`This is password ${password} and this is dbpassword ${dbUser.user_password} and this is the id ${dbUser.id}`)
+                    const dbID = dbUser.id
                     bcrypt.compare(password, dbUser.user_password)
-
                         .then((match) => {
                             if (!match) throw new Error('Password does not match!');
                             console.log('Great! You have succeeded!');
 
                             const cookie = jwt.sign({
+                                id: dbID,
                                 userCookie: username,
                                 passwordCookie: password
                             }, "SECRETCODE");

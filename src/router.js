@@ -13,9 +13,11 @@ const signupGetHandler = require("./handlers/signupGet.js");
 const signupPostHandler = require("./handlers/signupPost.js");
 const userHandler = require("./handlers/user.js");
 
-function checkAuth(auth, res){
-  if(!auth){
-    res.writeHead(302, { "location": "/login" })
+function checkAuth(auth, res) {
+  if (!auth) {
+    res.writeHead(302, {
+      "location": "/login"
+    })
     res.end()
     return false;
   }
@@ -27,17 +29,16 @@ function router(request, response) {
   const method = request.method;
 
   if (url.includes("public/")) return publicHandler(request, response);
-  if (url === "/logout" && method === "POST") return logoutHandler(request, response);
   if (url === "/login" && method === "GET") return loginGetHandler(request, response);
   if (url === "/login" && method === "POST") return loginPostHandler(request, response);
   if (url === "/signup" && method === "GET") return signupGetHandler(request, response);
   if (url === "/signup" && method === "POST") return signupPostHandler(request, response);
   if (url.includes("user/")) return userHandler(request, response);
-  
+
   let auth = false;
-  if(request.headers.cookie) {
+  if (request.headers.cookie) {
     cookie_body = request.headers.cookie.split("ingdom=")[1];
-    console.log("COOKIE BODY:", cookie_body);
+    // console.log("COOKIE BODY:", cookie_body);
     auth = jwt.verify(cookie_body, "SECRETCODE");
   }
 
@@ -45,11 +46,15 @@ function router(request, response) {
 
   if (url === "/") return homeHandler(request, response, auth);
 
+  if (url === "/logout") {
+    if (checkAuth(auth, response)) return logoutHandler(request, response);
+  }
+
   if (url === "/submit" && method === "GET") {
     if (checkAuth(auth, response)) return submitGetHandler(request, response);
-  } 
+  }
   if (url === "/submit" && method === "POST") {
-    if (checkAuth(auth, response))  return submitPostHandler(request, response);
+    if (checkAuth(auth, response)) return submitPostHandler(request, response);
   }
   if (url.includes("/delete-post")) {
     if (checkAuth(auth, response)) return deleteHandler(request, response);

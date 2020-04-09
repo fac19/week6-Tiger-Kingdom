@@ -62,7 +62,8 @@ function loggedIn(postObjArr) {
   let str = postObjArr.map((item) => makeArticle(item)).join("\n");
   return sharedLayout(
     str,
-    `<a href="/submit" class="navbar__links" aria-label="Write a new post">New Post!</a>`
+    `<a href="/logout" class="navbar__links" aria-label="Logout">Logout</a> 
+    <a href="/submit" class="navbar__links" aria-label="Write a new post">New Post!</a>`
   );
 }
 
