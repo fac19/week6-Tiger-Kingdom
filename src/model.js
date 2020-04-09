@@ -58,6 +58,12 @@ function getUsersTable() {
     .then((res) => res.rows);
 }
 
+function getUser(user) {
+  return db
+    .query("SELECT * FROM users WHERE username = ($1);", [user])
+    .then((res) => res.rows[0]);
+}
+
 function userDoesNotExist(user) {
   return db
     .query("SELECT * FROM users WHERE username = ($1);", [user])
@@ -80,4 +86,4 @@ function createNewUser(username, bcrypt_password) {
     })
 }
 
-module.exports = { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable };
+module.exports = { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable, getUser };

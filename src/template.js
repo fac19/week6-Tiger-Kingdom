@@ -70,9 +70,12 @@ function submitPage() {
   );
 }
 
+
+
 function missingPage() {
   return `
-  <img class="missing-resource-image" src="https://media.giphy.com/media/VwoJkTfZAUBSU/giphy.gif" alt="404 resource not found">
+  <h1>404 Page not found!</h1>
+  <img class="missing-resource-image" src="https://media.giphy.com/media/13ROLRgvNf5WQo/giphy.gif" alt="404 resource not found">
   `;
 }
 
@@ -102,12 +105,12 @@ function loginPage() {
   return sharedLayout(
     `
   <h1>Login in... pretty please</h1>
-  <form class="form" action="submit" method="POST">
-    <label for="signup_username">Username: </label>
-    <input id="signup_username" name="signup_username" placeholder="Username please" required>
+  <form class="form" action="login" method="POST">
+    <label for="login_username">Username: </label>
+    <input id="login_username" name="login_username" placeholder="Username please" required>
     
-    <label for="signup_password">Password: </label>
-    <input id="signup_password" name="signup_password" placeholder="Hidden password, I see you..." required>
+    <label for="login_password">Password: </label>
+    <input id="login_password" name="login_password" placeholder="Hidden password, I see you..." required>
     <button class="form__button" type="submit">login</button>
   </form>
 `
