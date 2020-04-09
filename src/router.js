@@ -22,7 +22,8 @@ function router(request, response) {
   } else if (url === "/submit" && method === "GET") {
     submitGetHandler(request, response);
   } else if (url === "/submit" && method === "POST") {
-    submitPostHandler(request, response); //BROKEN
+    console.log('submitPost not signup')
+    submitPostHandler(request, response);
   } else if (url === "/logout" && method === "POST") {
     logoutHandler(request, response);
   } else if (url === "/login" && method === "GET") {
@@ -32,6 +33,7 @@ function router(request, response) {
   } else if (url === "/signup" && method === "GET") {
     signupGetHandler(request, response);
   } else if (url === "/signup" && method === "POST") {
+    console.log('signup-post')
     signupPostHandler(request, response);
   } else if (url.includes("public/")) {
     publicHandler(request, response);
