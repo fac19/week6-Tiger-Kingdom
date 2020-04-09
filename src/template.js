@@ -7,7 +7,7 @@ function sharedLayout(bodyContent) {
             <meta name="description" content="Tiger Kingdom">
             <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lato:wght@300&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-            <script src="https://kit.fontawesome.com/794b746eef.js" crossorigin="anonymous"></script>
+
             <link rel="stylesheet" href="./public/main.css">
             <title>Tiger Kingdom</title>
         </head>
@@ -23,6 +23,7 @@ function sharedLayout(bodyContent) {
                 ${bodyContent}
             </div>
         </body>
+        <script src="https://kit.fontawesome.com/794b746eef.js" crossorigin="anonymous"></script>
         <script src="public/main.js"></script>
     </html>
     `;
@@ -70,8 +71,6 @@ function submitPage() {
   );
 }
 
-
-
 function missingPage() {
   return `
   <h1>404 Page not found!</h1>
@@ -79,7 +78,7 @@ function missingPage() {
   `;
 }
 
-// signup form 
+// signup form
 
 function signupPage() {
   return sharedLayout(
@@ -95,11 +94,10 @@ function signupPage() {
     <button class="form__button" type="submit">signup</button>
   </form>
 `
-  )
-
+  );
 }
 
-// login form 
+// login form
 
 function loginPage() {
   return sharedLayout(
@@ -114,8 +112,7 @@ function loginPage() {
     <button class="form__button" type="submit">login</button>
   </form>
 `
-  )
-
+  );
 }
 
 module.exports = {
@@ -123,5 +120,5 @@ module.exports = {
   missingPage,
   home,
   signupPage,
-  loginPage
+  loginPage,
 };
