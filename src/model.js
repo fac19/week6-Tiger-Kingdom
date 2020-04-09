@@ -44,7 +44,7 @@ function deletePost(postId, res) {
 
 function getUserPosts(user) {
   return db
-    .query("SELECT * FROM img_posts WHERE ($1)=username", [user])
+    .query("SELECT * FROM img_posts WHERE username=($1)", [user])
     .then((res) => res.rows);
 }
 
