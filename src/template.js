@@ -1,4 +1,4 @@
-function sharedLayout(bodyContent) {
+function sharedLayout(bodyContent, navButton) {
   return `<!DOCTYPE html>
     <html lang="en">    
         <head>
@@ -14,8 +14,7 @@ function sharedLayout(bodyContent) {
             <header>
               <h1 class="headerTitle glow">Tiger Kingdom</h1>
                 <nav class="navbar">
-                  <a href="/" class="navbar__links" aria-label="list of all posts">read</a>
-                  <a href="/submit" class="navbar__links" aria-label="write a new post">write</a>
+                  ${navButton}
                 </nav>
             </header>
         <body>
@@ -52,7 +51,19 @@ function makeArticle(obj) {
 
 function home(postObjArr) {
   let str = postObjArr.map((item) => makeArticle(item)).join("\n");
-  return sharedLayout(str);
+  return sharedLayout(
+    str,
+    `<a href="/login" class="navbar__links" aria-label="Login">login</a>
+  <a href="/signup" class="navbar__links" aria-label="Sign up">Signup</a>`
+  );
+}
+
+function loggedIn(postObjArr) {
+  let str = postObjArr.map((item) => makeArticle(item)).join("\n");
+  return sharedLayout(
+    str,
+    `<a href="/submit" class="navbar__links" aria-label="Write a new post">New Post!</a>`
+  );
 }
 
 function submitPage() {
@@ -67,7 +78,7 @@ function submitPage() {
       <input id='post_image' name='post_image' required> 
       <button class="form__button" type="submit">Add Post</button>
     </form>
-  `
+  `, `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
   );
 }
 
@@ -75,7 +86,7 @@ function missingPage() {
   return `
   <h1>404 Page not found!</h1>
   <img class="missing-resource-image" src="https://media.giphy.com/media/13ROLRgvNf5WQo/giphy.gif" alt="404 resource not found">
-  `;
+  <br><a href="/" class="navbar__links" aria-label="Go back to Home">Go back</a>`;
 }
 
 // signup form
@@ -83,17 +94,28 @@ function missingPage() {
 function signupPage() {
   return sharedLayout(
     `
-  <h1>Sign up to Enter the Tiger Kingdom...</h1>
-  <form class="form" action="signup" method="POST">
-    <label for="signup_username">Username: </label>
-    <input id="signup_username" name="signup_username" placeholder="Enter username" required>
-    
-    <label for="signup_password">Password: </label>
-    <input id="signup_password" name="signup_password" placeholder="Don't do password123!" required>
+      <h1>Sign up to Enter the Tiger Kingdom...</h1>
+      <form class="form" action="signup" method="POST">
+        <label for="signup_username">Username: </label>
+        <input
+          id="signup_username"
+          name="signup_username"
+          placeholder="Enter username"
+          required
+        />
 
-    <button class="form__button" type="submit">signup</button>
-  </form>
-`
+        <label for="signup_password">Password: </label>
+        <input
+          id="signup_password"
+          name="signup_password"
+          placeholder="Don't do password123!"
+          required
+        />
+
+        <button class="form__button" type="submit">signup</button>
+      </form>
+    `,
+    `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
   );
 }
 
@@ -102,23 +124,37 @@ function signupPage() {
 function loginPage() {
   return sharedLayout(
     `
-  <h1>Login in... pretty please</h1>
-  <form class="form" action="login" method="POST">
-    <label for="login_username">Username: </label>
-    <input id="login_username" name="login_username" placeholder="Username please" required>
-    
-    <label for="login_password">Password: </label>
-    <input id="login_password" name="login_password" placeholder="Hidden password, I see you..." required>
-    <button class="form__button" type="submit">login</button>
-  </form>
-`
+      <h1>Login in ...pretty please</h1>
+      <form class="form" action="login" method="POST">
+        <label for="login_username"> Username: </label>
+        <input
+          id="login_username"
+          name="login_username"
+          placeholder="Username please"
+          required
+        />
+        <label for="login_password"> Password: </label>
+        <input
+          id="login_password"
+          name="login_password"
+          placeholder="Hidden password, I see you..."
+          required
+        />
+        <button class="form__button" type="submit">
+          login </button> </form >
+        </button>
+      </form>
+    `,
+    `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
   );
 }
+
 
 module.exports = {
   submitPage,
   missingPage,
   home,
+  loggedIn,
   signupPage,
   loginPage,
 };
