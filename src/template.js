@@ -4,15 +4,15 @@ function sharedLayout(bodyContent) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="Pink Punk">
+            <meta name="description" content="Tiger Kingdom">
             <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lato:wght@300&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
             <script src="https://kit.fontawesome.com/794b746eef.js" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="./public/main.css">
-            <title>Pink Punk</title>
+            <title>Tiger Kingdom</title>
         </head>
             <header>
-              <h1 class="headerTitle glow">Pink Punk</h1>
+              <h1 class="headerTitle glow">Tiger Kingdom</h1>
                 <nav class="navbar">
                   <a href="/" class="navbar__links" aria-label="list of all posts">read</a>
                   <a href="/submit" class="navbar__links" aria-label="write a new post">write</a>
@@ -30,27 +30,27 @@ function sharedLayout(bodyContent) {
 
 function makeArticle(obj) {
   return `    
-    <article class="post" data-index=${obj.id}>
-      <p class="post__author">${obj.username} wrote:</p>
-      <p class="post__textContent">${obj.post}</p>
-      <p class="post__date">on: ${obj.post_date
-        .toString()
-        .split(" ")
-        .slice(0, 3)
-        .join(" ")}</p>
-      <button
-        class="post__remove-button"
-        aria-label="button to remove post"
-        type="button"
-      >
-      <i class="fas fa-trash-alt"></i>
-      </button>
-    </article>
+    <article class="post">
+    <p class="post__author">${obj.username} wrote:</p>
+    <p class="post__textContent">${obj.post}</p>
+    <p class="post__date">on: ${obj.post_date
+      .toString()
+      .split(" ")
+      .slice(0, 3)
+      .join(" ")}</p>
+      <img src=${obj.img_url}>
+      <a class="post__remove-button"
+      aria-label="button to remove post"
+      href="/delete-post?id=${obj.id}">
+        <i class="fas fa-trash-alt"></i>
+      </a>
+    </button>
+  </article>
 `;
 }
 
 function home(postObjArr) {
-  let str = postObjArr.map(item => makeArticle(item)).join("\n");
+  let str = postObjArr.map((item) => makeArticle(item)).join("\n");
   return sharedLayout(str);
 }
 
@@ -61,7 +61,9 @@ function submitPage() {
       <label for="username">Author: </label>
       <input id="username" name="username" placeholder="who are you?" required>
       <label for="post_text">Write Post</label>
-      <textarea id="post_text" rows="10" cols="50" name="post_text" aria-label="write blog here" placeholder="what are you thinking about?" required></textarea>
+      <textarea id="post_text" rows="10" cols="50" name="post_text" aria-label="write something here" placeholder="What's your favorite tiger?" required></textarea>
+      <label for='post_image'>Post a picture!</label>
+      <input id='post_image' name='post_image' required> 
       <button class="form__button" type="submit">Add Post</button>
     </form>
   `
