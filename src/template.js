@@ -2,7 +2,7 @@ function sharedLayout(bodyContent) {
   return `<!DOCTYPE html>
     <html lang="en">    
         <head>
-            <meta charset="UTF-8">
+            meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content="Tiger Kingdom">
             <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -76,4 +76,49 @@ function missingPage() {
   `;
 }
 
-module.exports = { submitPage, missingPage, home };
+// signup form 
+
+function signupPage() {
+  return sharedLayout(
+    `
+  <h1>Sign up to Enter the Tiger Kingdom...</h1>
+  <form class="form" action="submit" method="POST">
+    <label for="signup_username">Username: </label>
+    <input id="signup_username" name="signup_username" placeholder="Enter username" required>
+    
+    <label for="signup_password">Password: </label>
+    <input id="signup_password" name="signup_password" placeholder="Don't do password123!" required>
+
+    <button class="form__button" type="submit">signup</button>
+  </form>
+`
+  )
+
+}
+
+// login form 
+
+function loginPage() {
+  return sharedLayout(
+    `
+  <h1>Login in... pretty please</h1>
+  <form class="form" action="submit" method="POST">
+    <label for="signup_username">Username: </label>
+    <input id="signup_username" name="signup_username" placeholder="Username please" required>
+    
+    <label for="signup_password">Password: </label>
+    <input id="signup_password" name="signup_password" placeholder="Hidden password, I see you..." required>
+    <button class="form__button" type="submit">login</button>
+  </form>
+`
+  )
+
+}
+
+module.exports = {
+  submitPage,
+  missingPage,
+  home,
+  signupPage,
+  loginPage
+};
