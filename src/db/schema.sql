@@ -23,10 +23,10 @@ CREATE TABLE img_posts
 INSERT INTO users
     (username, user_password)
 VALUES
-    ('Tom', '1234'),
-    ('Chloe', 'password123'),
-    ('Kat', 'AlexReid'),
-    ('Roger', '123456789a');
+    ('Tom', '$2a$10$3IAfxI7ekmnHqMv1T8a46O./avVNcq/YYk6SGkRwxEHsy9cQasuUy'),
+    ('Chloe', '$2a$10$3IAfxI7ekmnHqMv1T8a46O./avVNcq/YYk6SGkRwxEHsy9cQasuUy'),
+    ('Kat', '$2a$10$det9UYQkW9avEapZQHEti.hcEYC6s4t0YzpXW1C949xMXxQpi.RC2'),
+    ('Roger', '$2a$10$Ii5o1InMg1gy4k9ylTTfiOyzDfOzKJ2n.6NuuxdgrPmx088X0DXna');
 
 INSERT INTO img_posts
     (author_id, post, img_url)
