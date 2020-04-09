@@ -76,7 +76,7 @@ function submitPage() {
       <label for="post_text">Write Post</label>
       <textarea id="post_text" rows="10" cols="50" name="post_text" aria-label="write something here" placeholder="What's your favorite tiger?" required></textarea>
       <label for='post_image'>Post a picture!</label>
-      <input id='post_image' name='post_image' required> 
+      <input id='post_image' name='img_url' required> 
       <button class="form__button" type="submit">Add Post</button>
     </form>
   `, `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
@@ -96,21 +96,32 @@ function signupPage() {
   return sharedLayout(
     `
       <h1>Sign up to Enter the Tiger Kingdom...</h1>
-      <form class="form" action="signup" method="POST">
-        <label for="signup_username">Username: </label>
+      <form id="signupForm" class="form" action="signup" method="POST">
+        <label for="signup_username">Username:<span aria-hidden="true">*</span> </label>
         <input
+          class="signup_inputs"
           id="signup_username"
           name="signup_username"
           placeholder="Enter username"
+          minlength="5"
           required
         />
 
-        <label for="signup_password">Password: </label>
+        <label for="signup_password">Password:<span aria-hidden="true">*</span></label>
+        <div id="passwordRequirements" class="requirements">
+          Passwords must contain at least one letter and one number, and contain
+          at least 8 characters.
+        </div>
         <input
+          class="signup_inputs"
           id="signup_password"
           name="signup_password"
           placeholder="Don't do password123!"
           required
+          aria-describedby="passwordRequirements passwordError"
+          required
+          pattern="(?=.*[A-z])(?=.*\d)[A-z\d]+"
+          minlength="8"
         />
 
         <button class="form__button" type="submit">signup</button>
@@ -127,14 +138,14 @@ function loginPage() {
     `
       <h1>Login in ...pretty please</h1>
       <form class="form" action="login" method="POST">
-        <label for="login_username"> Username: </label>
+        <label for="login_username"> Username:  <span aria-hidden="true">*</span> </label>
         <input
           id="login_username"
           name="login_username"
           placeholder="Username please"
           required
         />
-        <label for="login_password"> Password: </label>
+        <label for="login_password"> Password:<span aria-hidden="true">*</span> </label>
         <input
           id="login_password"
           name="login_password"

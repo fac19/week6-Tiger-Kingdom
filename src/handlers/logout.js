@@ -3,10 +3,10 @@ function logoutHandler(request, response) {
         response.writeHead(
             302, {
                 'Location': '/',
-                'Set-Cookie': `TigerKingdom=hjk; HttpOnly; Max-Age=0`
+                'Set-Cookie': `TigerKingdom=0; HttpOnly; Max-Age=0`
             });
     }
-    return response.end(console.log('hello'));
+    return response.end();
 }
 
 module.exports = logoutHandler;

@@ -16,8 +16,6 @@ articles.forEach(article => {
 })
 
 
-
-
 // deleteButtons.forEach(deleteButton => {
 //   deleteButton.addEventListener("click", event => {
 //     const indexToDelete = Array.from(deleteButtons).indexOf(deleteButton);
@@ -29,3 +27,20 @@ articles.forEach(article => {
 //     }).then(location.reload());
 //   });
 // });
+
+// form validation
+
+// const signup_form = document.querySelector('#signupForm');
+// const signup_input = document.querySelectorAll('.signup_inputs');
+// console.log(signup_input)
+
+// signup_form.setAttribute("novalidate", "");
+
+// signup_form.addEventListener("submit", (event) => {
+
+//   const allInputsValid = event.target.checkValidity();
+//   if (!allInputsValid) {
+//     event.preventDefault();
+//   }
+// });
+
