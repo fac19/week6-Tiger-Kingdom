@@ -22,7 +22,7 @@ function loginPostHandler(request, response) {
                         .then((match) => {
                             if (!match) throw new Error('Password does not match!');
                             console.log('Great! You have succeeded!');
-                            // Create a JWT and give it to them in a cookie
+
                             const cookie = jwt.sign({
                                 userCookie: username,
                                 passwordCookie: password
@@ -30,7 +30,7 @@ function loginPostHandler(request, response) {
                             response.writeHead(
                                 302, {
                                     'Location': '/',
-                                    'Set-Cookie': `jwt=${cookie}; HttpOnly`
+                                    'Set-Cookie': `TigerKingdom=${cookie}; HttpOnly`
                                 });
                             return response.end()
                         })
