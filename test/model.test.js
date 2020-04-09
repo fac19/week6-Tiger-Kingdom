@@ -1,13 +1,28 @@
 const test = require("tape");
 const build = require("../src/db/build");
 
-const { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable } = require("../src/model");
+const { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable, getUser } = require("../src/model");
 
 test("tests are running!", (t) => {
   const x = 5;
   t.equal(x, 5, "this is working");
   t.end();
 });
+
+test('Can get user', t=> {
+  build().then(() => {
+    getUser('Roger')
+    .then(data => {
+      t.equal(data.user_password, '123456789a');
+      t.end()
+    })
+  })
+  .catch((error) => {
+    t.error(error);
+    t.end();
+  });
+})
+
 
 test("Can get user posts!", (t) => {
   build().then(() => {
