@@ -7,11 +7,13 @@ function submitPostHandler(req, res) {
   req.on("end", () => {
     const message = new URLSearchParams(body);
     const messageObject = Object.fromEntries(message);
-    console.log(messageObject);
+
     model
       .newPost(messageObject)
       .then(() => {
-        res.writeHead(302, { location: "/" });
+        res.writeHead(302, {
+          location: "/"
+        });
         res.end();
       })
       .catch(err => console.error(err));
