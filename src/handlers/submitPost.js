@@ -7,7 +7,7 @@ function submitPostHandler(req, res) {
   req.on("end", () => {
     const message = new URLSearchParams(body);
     const messageObject = Object.fromEntries(message);
-
+    console.log("in submitPostHandler");
     model
       .newPost(messageObject)
       .then(() => {

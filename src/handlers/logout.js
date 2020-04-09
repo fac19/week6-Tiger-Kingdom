@@ -9,7 +9,7 @@ function logoutPostHandler(request, response) {
     response.writeHead(
         302, {
             'Location': '/',
-            'Set-Cookie': `TigerKingdom=${cookie}; Max-Age=0`
+            'Set-Cookie': `TigerKingdom=0; Max-Age=0`
         });
     return response.end();
 }
