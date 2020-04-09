@@ -18,27 +18,30 @@ function loginPostHandler(request, response) {
                     console.log(`This is ${password} and this is ${dbUser.user_password}`)
 
                     bcrypt.compare(password, dbUser.user_password)
-                })
-                .then((match) => {
-                    if (!match) throw new Error('Password does not match!');
-                    console.log('Great! You have succeeded!');
-                    // Create a JWT and give it to them in a cookie
-                    const cookie = jwt.sign({
-                        userCookie: username,
-                        passwordCookie: password
-                    }, "SECRETCODE");
-                    res.writeHead(
-                        302, {
-                            'Location': '/',
-                            'Set-Cookie': `jwt=${cookie}; HttpOnly`
-                        });
-                    return res.end()
-                })
-                .catch(err => {
-                    response.writeHead(401, {
-                        "content-type": "text/plain"
-                    });
-                    response.end(err.message);
+
+                        .then((match) => {
+                            if (!match) throw new Error('Password does not match!');
+                            console.log('Great! You have succeeded!');
+                            // Create a JWT and give it to them in a cookie
+                            const cookie = jwt.sign({
+                                userCookie: username,
+                                passwordCookie: password
+                            }, "SECRETCODE");
+                            response.writeHead(
+                                302, {
+                                    'Location': '/',
+                                    'Set-Cookie': `jwt=${cookie}; HttpOnly`
+                                });
+                            return response.end()
+                        })
+
+                        .catch(err => {
+                            response.writeHead(401, {
+                                "content-type": "text/plain"
+                            });
+                            response.end(err.message);
+                        })
+
                 })
 
                 .catch(err => {

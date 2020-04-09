@@ -1,5 +1,5 @@
 {
-  "name": "week5-dghp",
+  "name": "week6-Tiger-Kingdom",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
@@ -9,19 +9,19 @@
   "scripts": {
     "test": "tape test/*.test.js | tap-spec",
     "start": "node src/server.js",
-    "startdev": "nodemon src/server.js",
+    "startdev": "killall node; nodemon src/server.js",
     "setupdb": "node src/db/build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fac19/week5-DGHP.git"
+    "url": "git+https://github.com/fac19/week6-Tiger-Kingdom.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fac19/week5-DGHP/issues"
+    "url": "https://github.com/fac19/week6-Tiger-Kingdom/issues"
   },
-  "homepage": "https://github.com/fac19/week5-DGHP#readme",
+  "homepage": "https://github.com/fac19/week6-Tiger-Kingdom#readme",
   "devDependencies": {
     "nodemon": "^2.0.2",
     "tap-spec": "^5.0.0",
@@ -30,6 +30,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.0.0",
     "tape": "^4.13.2"
   }
