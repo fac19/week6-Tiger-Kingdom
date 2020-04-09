@@ -39,11 +39,11 @@ function makeArticle(obj) {
       .slice(0, 3)
       .join(" ")}</p>
       <img src=${obj.img_url}>
-    <a class="post__remove-button"
-    aria-label="button to remove post"
-    href="/delete-post?id=${obj.id}">
-      <i class="fas fa-trash-alt"></i>
-    </a>
+      <a class="post__remove-button"
+      aria-label="button to remove post"
+      href="/delete-post?id=${obj.id}">
+        <i class="fas fa-trash-alt"></i>
+      </a>
     </button>
   </article>
 `;

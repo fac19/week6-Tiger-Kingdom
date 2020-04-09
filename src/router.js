@@ -11,46 +11,33 @@ const signupGetHandler = require("./handlers/signupGet.js");
 const signupPostHandler = require("./handlers/signupPost.js");
 const userHandler = require("./handlers/user.js");
 
-
 function router(request, response) {
   const url = request.url;
   const method = request.method;
 
-  if (url === "/" && method === "DELETE") {
+  if (url.includes("/delete-post")) {
     deleteHandler(request, response);
   } else if (url === "/") {
     homeHandler(request, response);
-
   } else if (url === "/submit" && method === "GET") {
     submitGetHandler(request, response);
   } else if (url === "/submit" && method === "POST") {
     submitPostHandler(request, response); //BROKEN
-
   } else if (url === "/logout" && method === "POST") {
     logoutHandler(request, response);
-
-
   } else if (url === "/login" && method === "GET") {
     loginGetHandler(request, response);
   } else if (url === "/login" && method === "POST") {
     loginPostHandler(request, response);
-  } 
-
-  else if (url === "/signup" && method === "GET") {
+  } else if (url === "/signup" && method === "GET") {
     signupGetHandler(request, response);
   } else if (url === "/signup" && method === "POST") {
     signupPostHandler(request, response);
-  } 
-
-  else if (url.includes("public/")) {
+  } else if (url.includes("public/")) {
     publicHandler(request, response);
-  } 
-
-  else if (url.includes("user/")){
+  } else if (url.includes("user/")) {
     userHandler(request, response);
-  }
-  
-  else {
+  } else {
     missingHandler(request, response);
   }
 }

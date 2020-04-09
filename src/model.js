@@ -32,14 +32,17 @@ function newPost(message) {
 }
 
 function deletePost(postId, res) {
-  console.log("hello", postId);
-  db.query("DELETE FROM img_posts WHERE ($1)=id", [postId])
-    .then(() => {
-      res.writeHead(302, { location: "/" });
-      // res.writeHead(200);
-      res.end();
-    })
-    .catch(console.log);
+  db.query("DELETE FROM img_posts WHERE ($1)=id", [postId]).then(() => {
+    res.writeHead(302, { location: "/" });
+    res.end();
+  });
+  //   .catch(console.log);
+  // db.query("DELETE FROM img_posts WHERE ($1)=id", [postId])
+  //   .then(() => {
+  //     res.writeHead(302, { location: "/" });
+  //     res.end();
+  //   })
+  //   .catch(console.log);
 }
 
 function getUserPosts(user) {
@@ -47,5 +50,7 @@ function getUserPosts(user) {
     .query("SELECT * FROM img_posts WHERE username=($1)", [user])
     .then((res) => res.rows);
 }
+
+function createNewUser() {}
 
 module.exports = { newPost, getPosts, deletePost, getUserPosts };
