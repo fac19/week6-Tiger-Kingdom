@@ -15,16 +15,6 @@ articles.forEach(article => {
 
 })
 
-const logOut = document.getElementById("logOut");
-logOut.addEventListener("click", event => {
-    event.preventDefault();
-    fetch( "/logout", { method: 'POST' } )
-    .then( () => console.log("Logged out"))
-    .catch( err => console.log("Problem logging out:", err));
-});
-
-
-
 
 // deleteButtons.forEach(deleteButton => {
 //   deleteButton.addEventListener("click", event => {
