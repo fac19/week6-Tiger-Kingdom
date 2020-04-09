@@ -5,6 +5,7 @@ const getBody = require("../getBody");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 
+// console.log("SERVER HERE, I'M TRYING TO LOG YOU OUT");
 function logoutPostHandler(request, response) {
     response.writeHead(
         302, {

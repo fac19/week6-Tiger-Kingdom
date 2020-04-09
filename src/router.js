@@ -27,7 +27,8 @@ function router(request, response) {
   const method = request.method;
 
   if (url.includes("public/")) return publicHandler(request, response);
-  if (url === "/logout" && method === "POST") return logoutHandler(request, response);
+  // if (url === "/logout" && method === "POST") return logoutHandler(request, response);
+  if (url === "/logout") return logoutHandler(request, response);
   if (url === "/login" && method === "GET") return loginGetHandler(request, response);
   if (url === "/login" && method === "POST") return loginPostHandler(request, response);
   if (url === "/signup" && method === "GET") return signupGetHandler(request, response);
@@ -38,7 +39,12 @@ function router(request, response) {
   if(request.headers.cookie) {
     cookie_body = request.headers.cookie.split("ingdom=")[1];
     console.log("COOKIE BODY:", cookie_body);
-    auth = jwt.verify(cookie_body, "SECRETCODE");
+    try {
+        auth = jwt.verify(cookie_body, "SECRETCODE");
+    }
+    catch(err) {
+        console.error("JWT ERROR:", err)
+    }
   }
 
   console.log("AUTH STATUS IS:", auth)

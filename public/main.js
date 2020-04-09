@@ -15,6 +15,14 @@ articles.forEach(article => {
 
 })
 
+const logOut = document.getElementById("logOut");
+logOut.addEventListener("click", event => {
+    event.preventDefault();
+    fetch( "/logout", { method: 'POST' } )
+    .then( () => console.log("Logged out"))
+    .catch( err => console.log("Problem logging out:", err));
+});
+
 
 
 
@@ -29,3 +37,20 @@ articles.forEach(article => {
 //     }).then(location.reload());
 //   });
 // });
+
+// form validation
+
+// const signup_form = document.querySelector('#signupForm');
+// const signup_input = document.querySelectorAll('.signup_inputs');
+// console.log(signup_input)
+
+// signup_form.setAttribute("novalidate", "");
+
+// signup_form.addEventListener("submit", (event) => {
+
+//   const allInputsValid = event.target.checkValidity();
+//   if (!allInputsValid) {
+//     event.preventDefault();
+//   }
+// });
+
