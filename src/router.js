@@ -30,6 +30,7 @@ function router(request, response) {
     loginGetHandler(request, response);
   } else if (url === "/login" && method === "POST") {
     loginPostHandler(request, response);
+
   } else if (url === "/signup" && method === "GET") {
     signupGetHandler(request, response);
   } else if (url === "/signup" && method === "POST") {
