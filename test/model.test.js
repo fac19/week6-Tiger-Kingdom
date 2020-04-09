@@ -42,7 +42,26 @@ test('Can create new user', t => {
   })
   .catch(err => { t.error(err),
   t.end()})
+})
 
+
+test('Checks for existing user before adding it', t => {
+  build().then(() => {
+    const newUser = 'Tom';
+    const newPassword = 'password123'
+    createNewUser(newUser, newPassword)
+    .then(() => {
+      getUsersTable()
+      .then((data) => {
+        t.equal(data[data.length-1].username, 'Roger')
+        t.equal(data.length, 4)
+        t.end();
+      })
+    })
+    
+  })
+  .catch(err => { t.error(err),
+  t.end()})
 })
 
 
