@@ -3,33 +3,51 @@ const db = require("../db/connection.js");
 const model = require("../model.js");
 const getBody = require("../getBody");
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 
 function loginPostHandler(request, response) {
     getBody(request)
-    .then((body) => {
-        const params = new URLSearchParams(body);
-        const username = params.get('login_username');
-        const password = params.get('login_password');
-        console.log("Login attempt:", username, password);
-    
-        model.getUser(username)
-        .then(dbUser => {
-            bcrypt.compare(password, dbUser.user_password)
-            .then((res)=> {
-                if (!res) throw new Error ('Password does not match!');
-                console.log('Great! You have succeeded!');
-                // Create a JWT and give it to them in a cookie
-            })
-            .catch( err => {
-                response.writeHead(401, { "content-type": "text/plain" });
-                response.end(err.message);
-            })
-        })
-        .catch( err => {
-            response.writeHead(401, { "content-type": "text/plain" });
-            response.end("User not found");
-        })
-    });
+        .then((body) => {
+            const params = new URLSearchParams(body);
+            const username = params.get('login_username');
+            const password = params.get('login_password');
+            console.log("Login attempt:", username, password);
+
+            model.getUser(username)
+                .then(dbUser => {
+                    console.log(`This is ${password} and this is ${dbUser.user_password}`)
+
+                    bcrypt.compare(password, dbUser.user_password)
+                })
+                .then((match) => {
+                    if (!match) throw new Error('Password does not match!');
+                    console.log('Great! You have succeeded!');
+                    // Create a JWT and give it to them in a cookie
+                    const cookie = jwt.sign({
+                        userCookie: username,
+                        passwordCookie: password
+                    }, "SECRETCODE");
+                    res.writeHead(
+                        302, {
+                            'Location': '/',
+                            'Set-Cookie': `jwt=${cookie}; HttpOnly`
+                        });
+                    return res.end()
+                })
+                .catch(err => {
+                    response.writeHead(401, {
+                        "content-type": "text/plain"
+                    });
+                    response.end(err.message);
+                })
+
+                .catch(err => {
+                    response.writeHead(401, {
+                        "content-type": "text/plain"
+                    });
+                    response.end("User not found");
+                })
+        });
 }
 
 module.exports = loginPostHandler;
