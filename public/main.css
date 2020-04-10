@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url(https://static8.depositphotos.com/1001150/946/v/450/depositphotos_9467852-stock-illustration-tiger-skin-vector-seamless-texture.jpg);
+  background-image: url('https://static8.depositphotos.com/1001150/946/v/450/depositphotos_9467852-stock-illustration-tiger-skin-vector-seamless-texture.jpg');
   background-color: var(--secondary-bright);
   display: flex;
   flex-direction: column;
