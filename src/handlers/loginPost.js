@@ -5,6 +5,9 @@ const getBody = require("../getBody");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 
+const secret = process.env.SECRET;
+
+
 function loginPostHandler(request, response) {
     getBody(request)
         .then((body) => {
@@ -26,11 +29,11 @@ function loginPostHandler(request, response) {
                                 id: dbID,
                                 userCookie: username,
                                 passwordCookie: password
-                            }, "SECRETCODE");
+                            }, secret);
                             response.writeHead(
                                 302, {
                                     'Location': '/',
-                                    'Set-Cookie': `TigerKingdom=${cookie}; HttpOnly`
+                                    'Set-Cookie': `TigerKingdom=${cookie}; HttpOnly; Max-Age=20000`
                                 });
                             return response.end()
                         })

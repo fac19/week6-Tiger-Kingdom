@@ -1,20 +1,17 @@
 const articles = document.querySelectorAll(`article`);
 
-articles.forEach(article => {
-  article.addEventListener('click', (event)=>{
+articles.forEach((article) => {
+  article.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON" || event.target.tagName === "I") {
-        //console.log(article.dataset.index); 
-      fetch('/', {
-        method: 'delete',
-        headers: {'content-type': 'application/json'},
-        body: article.dataset.index
-      })
-      .then(location.reload());
+      //console.log(article.dataset.index);
+      fetch("/", {
+        method: "delete",
+        headers: { "content-type": "application/json" },
+        body: article.dataset.index,
+      }).then(location.reload());
     }
-})
-
-})
-
+  });
+});
 
 // deleteButtons.forEach(deleteButton => {
 //   deleteButton.addEventListener("click", event => {
@@ -44,3 +41,11 @@ articles.forEach(article => {
 //   }
 // });
 
+let images = document.querySelectorAll("img");
+
+images.forEach((img) => {
+  img.onerror = function () {
+    this.src =
+      "https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png"; // place your error.png image instead
+  };
+});

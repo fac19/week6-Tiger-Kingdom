@@ -40,7 +40,9 @@ function makeArticle(obj) {
       .split(" ")
       .slice(0, 3)
       .join(" ")}</p>
-      <img src=${obj.img_url}>
+      <img class="post__img" src=${
+        obj.img_url
+      } onerror="this.onerror=null;this.src='https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png';"/>
       <a class="post__remove-button"
       aria-label="button to remove post"
       href="/delete-post?id=${obj.id}">
@@ -78,7 +80,7 @@ function submitPage() {
       <label for="post_text">Write Post</label>
       <textarea id="post_text" rows="10" cols="50" name="post_text" aria-label="write something here" placeholder="What's your favorite tiger?" required></textarea>
       <label for='post_image'>Post a picture!</label>
-      <input id='post_image' name='img_url' required> 
+      <input id='post_image' name='img_url' placeholder="https://tiger-image.tigggersplash.com/photo" required> 
       <button class="form__button" type="submit">Add Post</button>
     </form>
   `,
