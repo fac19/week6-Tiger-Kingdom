@@ -45,11 +45,8 @@ header {
 .navbar_title {
   flex: auto;
   font-family: "Rye", cursive;
-<<<<<<< HEAD
-=======
   font-size: 0.8rem;
   padding: 0.1rem;
->>>>>>> master
 }
 
 .navbar__links {
