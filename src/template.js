@@ -40,7 +40,9 @@ function makeArticle(obj) {
       .split(" ")
       .slice(0, 3)
       .join(" ")}</p>
-      <img src=${obj.img_url}>
+      <img class="post__img" src=${
+        obj.img_url
+      } onerror="this.onerror=null;this.src='https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png';"/>
       <a class="post__remove-button"
       aria-label="button to remove post"
       href="/delete-post?id=${obj.id}">
