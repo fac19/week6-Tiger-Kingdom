@@ -41,11 +41,7 @@ function router(request, response) {
     cookie_body = request.headers.cookie.split("ingdom=")[1];
     // console.log("COOKIE BODY:", cookie_body);
     try {
-<<<<<<< HEAD
-      auth = jwt.verify(cookie_body, "SECRETCODE");
-=======
       auth = jwt.verify(cookie_body, secret);
->>>>>>> master
     } catch (err) {
       console.error("JWT ERROR:", err)
     }
