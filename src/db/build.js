@@ -9,4 +9,6 @@ function build() {
   return db.query(initSql);
 };
 
+if (require.main === module) build();
+
 module.exports = build;
