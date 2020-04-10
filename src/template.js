@@ -121,11 +121,11 @@ function signupPage() {
           class="signup_inputs"
           id="signup_password"
           name="signup_password"
+          type='password'
           placeholder="Don't do password123!"
           required
           aria-describedby="passwordRequirements passwordError"
           required
-          pattern="(?=.*[A-z])(?=.*\d)[A-z\d]+"
           minlength="8"
         />
 
@@ -147,6 +147,7 @@ function loginPage() {
         <input
           id="login_username"
           name="login_username"
+          type='password'
           placeholder="Username please"
           required
         />

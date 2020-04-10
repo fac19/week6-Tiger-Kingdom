@@ -1,5 +1,5 @@
 :root {
-  --main: rgb(216, 152, 72);
+  --main: rgb(236, 172, 94);
   --secondary-dark: rgb(9, 3, 1);
   --secondary-bright: rgb(231, 228, 225);
 }
@@ -10,6 +10,7 @@
 }
 
 body {
+  background-image: url(https://static8.depositphotos.com/1001150/946/v/450/depositphotos_9467852-stock-illustration-tiger-skin-vector-seamless-texture.jpg);
   background-color: var(--secondary-bright);
   display: flex;
   flex-direction: column;
@@ -88,8 +89,6 @@ header {
   transition: 0.2s ease-in-out;
   background-color: var(--secondary-dark);
   color: var(--main);
-  /* border: 1px solid var(--secondary-dark);
-  border-top: 1px solid var(--secondary-dark); */
 }
 
 .post p {

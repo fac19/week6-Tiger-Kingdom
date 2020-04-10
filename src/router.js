@@ -11,7 +11,6 @@ const loginPostHandler = require("./handlers/loginPost.js");
 const logoutHandler = require("./handlers/logout.js");
 const signupGetHandler = require("./handlers/signupGet.js");
 const signupPostHandler = require("./handlers/signupPost.js");
-const userHandler = require("./handlers/user.js");
 
 const secret = process.env.SECRET;
 
@@ -36,7 +35,6 @@ function router(request, response) {
   if (url === "/login" && method === "POST") return loginPostHandler(request, response);
   if (url === "/signup" && method === "GET") return signupGetHandler(request, response);
   if (url === "/signup" && method === "POST") return signupPostHandler(request, response);
-  if (url.includes("user/")) return userHandler(request, response);
 
   let auth = false;
   if (request.headers.cookie) {
