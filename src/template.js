@@ -147,7 +147,6 @@ function loginPage() {
         <input
           id="login_username"
           name="login_username"
-          type='password'
           placeholder="Username please"
           required
         />
@@ -155,6 +154,7 @@ function loginPage() {
         <input
           id="login_password"
           name="login_password"
+          type='password'
           placeholder="Hidden password, I see you..."
           required
         />
