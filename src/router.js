@@ -13,6 +13,8 @@ const signupGetHandler = require("./handlers/signupGet.js");
 const signupPostHandler = require("./handlers/signupPost.js");
 const userHandler = require("./handlers/user.js");
 
+const secret = process.env.SECRET;
+
 function checkAuth(auth, res) {
   if (!auth) {
     res.writeHead(302, {
@@ -41,10 +43,9 @@ function router(request, response) {
     cookie_body = request.headers.cookie.split("ingdom=")[1];
     console.log("COOKIE BODY:", cookie_body);
     try {
-        auth = jwt.verify(cookie_body, "SECRETCODE");
-    }
-    catch(err) {
-        console.error("JWT ERROR:", err)
+      auth = jwt.verify(cookie_body, secret);
+    } catch (err) {
+      console.error("JWT ERROR:", err)
     }
   }
 
