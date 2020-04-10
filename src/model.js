@@ -31,18 +31,14 @@ function newPost(message) {
     });
 }
 
+function postAuthorID(postID) {
+  // console.log("Getting postAuthorID:", postID);
+  return db.query("SELECT author_id FROM img_posts WHERE ($1)=id", [postID])
+  .then( id => id.rows[0].author_id );
+}
+
 function deletePost(postId, res) {
-  db.query("DELETE FROM img_posts WHERE ($1)=id", [postId]).then(() => {
-    res.writeHead(302, { location: "/" });
-    res.end();
-  });
-  //   .catch(console.log);
-  // db.query("DELETE FROM img_posts WHERE ($1)=id", [postId])
-  //   .then(() => {
-  //     res.writeHead(302, { location: "/" });
-  //     res.end();
-  //   })
-  //   .catch(console.log);
+  return db.query("DELETE FROM img_posts WHERE ($1)=id", [postId]);
 }
 
 function getUserPosts(user) {
@@ -86,4 +82,4 @@ function createNewUser(username, bcrypt_password) {
     })
 }
 
-module.exports = { newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable, getUser };
+module.exports = { postAuthorID, newPost, getPosts, deletePost, getUserPosts, createNewUser, getUsersTable, getUser };

@@ -39,7 +39,7 @@ function router(request, response) {
   let auth = false;
   if (request.headers.cookie) {
     cookie_body = request.headers.cookie.split("ingdom=")[1];
-    console.log("COOKIE BODY:", cookie_body);
+    // console.log("COOKIE BODY:", cookie_body);
     try {
         auth = jwt.verify(cookie_body, "SECRETCODE");
     }
@@ -59,7 +59,7 @@ function router(request, response) {
     if (checkAuth(auth, response)) return submitPostHandler(request, response);
   }
   if (url.includes("/delete-post")) {
-    if (checkAuth(auth, response)) return deleteHandler(request, response);
+    if (checkAuth(auth, response)) return deleteHandler(request, response, auth);
   }
 
   missingHandler(request, response);
