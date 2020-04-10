@@ -6,16 +6,18 @@ function sharedLayout(bodyContent, navButton) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content="Tiger Kingdom">
             <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lato:wght@300&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet"
             <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 
             <link rel="stylesheet" href="./public/main.css">
             <title>Tiger Kingdom</title>
         </head>
             <header>
-              <h1 class="headerTitle glow">Tiger Kingdom</h1>
-                <nav class="navbar">
-                  ${navButton}
-                </nav>
+            <nav class="navbar">
+            <h1 class="navbar_title">Tiger Kingdom</h1>
+            ${navButton}
+          </nav>
+             
             </header>
         <body>
             <div class="container">
@@ -79,7 +81,8 @@ function submitPage() {
       <input id='post_image' name='img_url' required> 
       <button class="form__button" type="submit">Add Post</button>
     </form>
-  `, `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
+  `,
+    `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
   );
 }
 
@@ -160,7 +163,6 @@ function loginPage() {
     `<a href="/" class="navbar__links" aria-label="Go back to Home">Home</a>`
   );
 }
-
 
 module.exports = {
   submitPage,
