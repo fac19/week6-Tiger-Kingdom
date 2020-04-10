@@ -33,7 +33,7 @@ function loginPostHandler(request, response) {
                             response.writeHead(
                                 302, {
                                     'Location': '/',
-                                    'Set-Cookie': `TigerKingdom=${cookie}; HttpOnly`
+                                    'Set-Cookie': `TigerKingdom=${cookie}; HttpOnly; Max-Age=20000`
                                 });
                             return response.end()
                         })
