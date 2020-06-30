@@ -1,10 +1,21 @@
 {
-  "name": "week6-Tiger-Kingdom",
+  "name": "week6-tiger-kingdom",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/server.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.4.1",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.1"
   },
   "scripts": {
     "test": "tape test/*.test.js | tap-spec",
@@ -14,25 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fac19/week6-Tiger-Kingdom.git"
+    "url": "git+https://github.com/Chloeh24/week6-Tiger-Kingdom.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fac19/week6-Tiger-Kingdom/issues"
+    "url": "https://github.com/Chloeh24/week6-Tiger-Kingdom/issues"
   },
-  "homepage": "https://github.com/fac19/week6-Tiger-Kingdom#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.2",
-    "tap-spec": "^5.0.0",
-    "test": "^0.6.0"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie": "^0.4.0",
-    "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^8.0.0",
-    "tape": "^4.13.2"
-  }
+  "homepage": "https://github.com/Chloeh24/week6-Tiger-Kingdom#readme"
 }
