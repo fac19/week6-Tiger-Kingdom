@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url(https://static8.depositphotos.com/1001150/946/v/450/depositphotos_9467852-stock-illustration-tiger-skin-vector-seamless-texture.jpg);
+  background-image: url('https://static8.depositphotos.com/1001150/946/v/450/depositphotos_9467852-stock-illustration-tiger-skin-vector-seamless-texture.jpg');
   background-color: var(--secondary-bright);
   display: flex;
   flex-direction: column;
@@ -149,7 +149,7 @@ header {
   width: 90%;
 }
 
-.form > * {
+.form>* {
   padding: 1rem;
 }
 
@@ -177,6 +177,7 @@ form button:hover {
     width: 80vw;
     padding: 4rem;
   }
+
   .navbar_title {
     font-size: 1.4rem;
   }
@@ -185,19 +186,23 @@ form button:hover {
     padding: 0.9rem;
     font-size: 1.2rem;
   }
+
   .form {
     width: 80%;
   }
 }
+
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1224px) {
   .container {
     width: 60vw;
     padding: 5rem;
   }
+
   .navbar_title {
     font-size: 2.4rem;
   }
+
   .glow {
     font-size: 5rem;
   }

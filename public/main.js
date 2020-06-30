@@ -6,7 +6,9 @@ articles.forEach((article) => {
       //console.log(article.dataset.index);
       fetch("/", {
         method: "delete",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json"
+        },
         body: article.dataset.index,
       }).then(location.reload());
     }
